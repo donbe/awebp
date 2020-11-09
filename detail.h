@@ -3,11 +3,10 @@
 
 #include <QMainWindow>
 
-class Detail : public QWidget
-{
+class Detail : public QWidget {
 Q_OBJECT
+
 public:
-//explicit Detail(QWidget *parent = nullptr);
 Detail(QWidget *parent = nullptr, QStringList fs = QStringList());
 QStringList fileNames;
 

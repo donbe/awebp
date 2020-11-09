@@ -1,0 +1,20 @@
+Awebp{
+    background-color:white;
+}
+
+QPushButton{
+    border-style: dashed;
+    border-width: 2px;
+    border-radius: 5px;
+    color: rgb(97,97,97);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    border-color: rgb(105,181,249);
+}
+
+QPushButton:!hover {
+    border-color: rgb(217,217,217);
+}

@@ -1,3 +1,7 @@
 <RCC>
     <qresource prefix="/test"/>
+    <qresource prefix="/">
+        <file>awebp.css</file>
+        <file>detail.css</file>
+    </qresource>
 </RCC>

@@ -4,19 +4,19 @@
 #include <QDebug>
 #include <QFileDialog>
 #include "detail.h"
+#include "common.h"
 
+static const QString style = "";
 
 Awebp::Awebp(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Awebp) {
 
+    loadcss(this,":/awebp.css");
 
     // 设置最小值
     setMinimumWidth(700);
     setMinimumHeight(500);
-
-    // 设置背景色
-    setStyleSheet("background-color:white;");
 
     // 容器
     mContent = new QWidget;
@@ -25,24 +25,11 @@ Awebp::Awebp(QWidget *parent)
     // 添加按钮
     mButton = new QPushButton("点击导入图片", mContent);
     mButton->setCursor(Qt::PointingHandCursor);
-    mButton->setStyleSheet("*{"
-                           "border-style: dashed;"
-                           "border-width: 2px;"
-                           "border-radius: 5px;"
-                           "color: rgb(97,97,97);"
-                           "font-size: 15px;"
-                           "font-weight: bold;"
-                           "}"
-                           "*:hover{"
-                           "border-color: rgb(105,181,249);"
-                           "}"
-                           "*:!hover{"
-                           "border-color: rgb(217,217,217);"
-                           "}"
-                           );
 
     connect(mButton, SIGNAL(clicked()), this, SLOT(onClicked()));
 }
+
+
 
 void Awebp::resizeEvent(QResizeEvent *event) {
     QMainWindow::resizeEvent(event);

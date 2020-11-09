@@ -25,5 +25,6 @@ QWidget *mContent;
 QPushButton *mButton;
 void changeBackground();
 void resizeEvent(QResizeEvent *event) override;
+
 };
 #endif // AWEBP_H

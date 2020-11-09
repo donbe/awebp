@@ -7,6 +7,11 @@
 #include <qlistview.h>
 #include <qstandarditemmodel.h>
 #include <qurl.h>
+#include <QGroupBox>
+#include "common.h"
+#include <QLineEdit>
+
+static const QString style = "";
 
 Detail::Detail(QWidget *parent, QStringList fs) : QWidget(parent) {
     fileNames = fs;
@@ -14,20 +19,12 @@ Detail::Detail(QWidget *parent, QStringList fs) : QWidget(parent) {
     setMinimumWidth(700);
     setMinimumHeight(500);
 
+    // 加载样式文件
+    loadcss(this, ":/detail.css");
+
+    // 横向布局
     QHBoxLayout *hlayout = new QHBoxLayout();
-
-
-//    QVBoxLayout *vrightRayout = new QVBoxLayout();
-
-
-//    hlayout->addLayout(vrightRayout);
-
-//    QPushButton *btn2 = new QPushButton("bbb");
-
-//    btn2->setMaximumWidth(200);
-//    btn2->setMinimumWidth(200);
-//    vrightRayout->addWidget(btn2);
-
+    setLayout(hlayout);
 
 
     // 列表数据
@@ -35,7 +32,6 @@ Detail::Detail(QWidget *parent, QStringList fs) : QWidget(parent) {
     for (QString filename : fileNames) {
         model->appendRow(new QStandardItem(QIcon(filename), QUrl(filename).fileName()));
     }
-
 
     // 左侧列表
     QListView *listView = new QListView();
@@ -46,14 +42,24 @@ Detail::Detail(QWidget *parent, QStringList fs) : QWidget(parent) {
     hlayout->addWidget(listView);
 
 
-
     // 右侧设置
-    QWidget *right = new QWidget();
-    right->setStyleSheet("background-color:rgb(212,220,229)");
-    right->setMinimumWidth(200);
-    hlayout->addWidget(right);
+    QGroupBox *box = new QGroupBox();
+    box->setTitle("输出设置");
+    box->setMinimumWidth(200);
+    hlayout->addWidget(box);
 
-    setLayout(hlayout);
+    QWidget *frequencyGroup = new QWidget(box);
+    QHBoxLayout *frequencyLayout= new QHBoxLayout();
+    box->setLayout(frequencyLayout);
+
+    QLabel *label = new QLabel("帧频",frequencyGroup);
+    label->move(20, 40);
+    label->setMaximumHeight(20);
+    frequencyLayout->addWidget(label);
+
+    QLineEdit *edit = new QLineEdit(frequencyGroup);
+    frequencyLayout->addWidget(edit);
+
 }
 
 void Detail::showEvent(QShowEvent *event) {

@@ -15,9 +15,11 @@ SOURCES += \
 
 HEADERS += \
     awebp.h \
+    common.h \
     detail.h
 
-FORMS +=
+FORMS += \
+    form.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
