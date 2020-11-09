@@ -9,8 +9,7 @@
 Awebp::Awebp(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Awebp) {
-    // 初始化UI
-    ui->setupUi(this);
+
 
     // 设置最小值
     setMinimumWidth(700);
@@ -73,8 +72,7 @@ void Awebp::onClicked() {
         fileNames = dialog.selectedFiles();
         qInfo("%d", fileNames.length());
 
-        Detail *detail = new Detail();
-        detail->fileNames = fileNames;
+        Detail *detail = new Detail(nullptr,fileNames);
         detail->show();
 
         close();
