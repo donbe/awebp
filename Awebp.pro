@@ -19,7 +19,7 @@ HEADERS += \
     detail.h
 
 FORMS += \
-    form.ui
+    detail.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -49,16 +49,16 @@ Detail::Detail(QWidget *parent, QStringList fs) : QWidget(parent) {
     hlayout->addWidget(box);
 
     QWidget *frequencyGroup = new QWidget(box);
+    frequencyGroup->move(0,30);
     QHBoxLayout *frequencyLayout= new QHBoxLayout();
-    box->setLayout(frequencyLayout);
+    frequencyGroup->setLayout(frequencyLayout);
 
     QLabel *label = new QLabel("帧频",frequencyGroup);
-    label->move(20, 40);
-    label->setMaximumHeight(20);
     frequencyLayout->addWidget(label);
 
     QLineEdit *edit = new QLineEdit(frequencyGroup);
     frequencyLayout->addWidget(edit);
+    edit->resize(150,21);
 
 }
 
