@@ -18,6 +18,8 @@ public:
 
 
     QStringList fileNames;
+public slots:
+    void onClicked();
 
 private:
     Ui::Form *ui;

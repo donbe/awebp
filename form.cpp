@@ -3,7 +3,7 @@
 #include <qstandarditemmodel.h>
 #include <qurl.h>
 #include <QListView>
-
+#include <qdebug.h>
 Form::Form(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Form) {
@@ -25,9 +25,16 @@ Form::Form(QWidget *parent, QStringList fs) : QWidget(parent),
         model->appendRow(new QStandardItem(QIcon(filename), QUrl(filename).fileName()));
     }
 
-    // 左侧列表
+    // 绑定数据
     QListView *listView = ui->listView;
     listView->setModel(model);
+
+    // 按钮事件
+    connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(onClicked()));
+}
+
+void Form::onClicked(){
+
 }
 
 Form::~Form() {
