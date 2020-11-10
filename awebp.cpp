@@ -3,8 +3,9 @@
 #include "qboxlayout.h"
 #include <QDebug>
 #include <QFileDialog>
-#include "detail.h"
+#include "form.h"
 #include "common.h"
+
 
 static const QString style = "";
 
@@ -59,8 +60,8 @@ void Awebp::onClicked() {
         fileNames = dialog.selectedFiles();
         qInfo("%d", fileNames.length());
 
-        Detail *detail = new Detail(nullptr,fileNames);
-        detail->show();
+        Form *form = new Form(nullptr,fileNames);
+        form->show();
 
         close();
     }
