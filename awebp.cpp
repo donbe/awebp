@@ -17,11 +17,11 @@ Awebp::Awebp(QWidget *parent)
     setMinimumHeight(500);
 
     // 容器
-    mContent = new QWidget;
-    setCentralWidget(mContent);
+    QWidget *content = new QWidget;
+    setCentralWidget(content);
 
     // 添加按钮
-    mButton = new QPushButton("点击导入图片", mContent);
+    mButton = new QPushButton("点击导入图片", content);
     mButton->setCursor(Qt::PointingHandCursor);
 
     connect(mButton, SIGNAL(clicked()), this, SLOT(onClicked()));
@@ -38,8 +38,7 @@ void Awebp::resizeEvent(QResizeEvent *event) {
 
 // 析构函数
 Awebp::~Awebp() {
-    delete ui;
-    delete mContent;
+
 }
 
 void Awebp::onClicked() {
@@ -53,7 +52,6 @@ void Awebp::onClicked() {
 
     if (dialog.exec()) {
         fileNames = dialog.selectedFiles();
-        qInfo("%d", fileNames.length());
 
         Form *form = new Form(nullptr, fileNames);
         form->awebp = this;

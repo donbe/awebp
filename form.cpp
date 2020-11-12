@@ -141,7 +141,7 @@ void Form::onClicked() {
 
     if (ok) {
         QString fileName = QFileDialog::getSaveFileName(this, "保存文件",
-                                                        QDir::homePath() + "/untitled.webp",
+                                                        QDir::homePath() + "/Downloads/untitled.webp",
                                                         "Images (*.webp)");
         if (fileName.length()) {
             ok = ImgIoUtilWriteFile(fileName.toLatin1(), webp_data.bytes, webp_data.size);
