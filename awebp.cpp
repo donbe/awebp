@@ -1,5 +1,4 @@
 #include "awebp.h"
-#include "ui_awebp.h"
 #include "qboxlayout.h"
 #include <QDebug>
 #include <QFileDialog>
@@ -10,10 +9,8 @@
 static const QString style = "";
 
 Awebp::Awebp(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::Awebp) {
-
-    loadcss(this,":/awebp.css");
+    : QMainWindow(parent) {
+    loadcss(this, ":/awebp.css");
 
     // 设置最小值
     setMinimumWidth(700);
@@ -29,8 +26,6 @@ Awebp::Awebp(QWidget *parent)
 
     connect(mButton, SIGNAL(clicked()), this, SLOT(onClicked()));
 }
-
-
 
 void Awebp::resizeEvent(QResizeEvent *event) {
     QMainWindow::resizeEvent(event);
@@ -60,7 +55,7 @@ void Awebp::onClicked() {
         fileNames = dialog.selectedFiles();
         qInfo("%d", fileNames.length());
 
-        Form *form = new Form(nullptr,fileNames);
+        Form *form = new Form(nullptr, fileNames);
         form->awebp = this;
         form->show();
 
