@@ -61,10 +61,9 @@ void Awebp::onClicked() {
         qInfo("%d", fileNames.length());
 
         Form *form = new Form(nullptr,fileNames);
+        form->awebp = this;
         form->show();
 
-        close();
+        hide();
     }
-
-
 }

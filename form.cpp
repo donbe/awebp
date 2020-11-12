@@ -9,6 +9,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 
+
 Form::Form(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Form) {
@@ -18,6 +19,8 @@ Form::Form(QWidget *parent) :
 Form::Form(QWidget *parent, QStringList fs) : QWidget(parent),
     ui(new Ui::Form) {
     ui->setupUi(this);
+
+    setAttribute(Qt::WA_DeleteOnClose);
 
     fileNames = fs;
 
@@ -202,4 +205,8 @@ int Form::SetLoopCount(int loop_count, WebPData *const webp_data) {
     }
 
     return ok;
+}
+
+void Form::closeEvent(QCloseEvent *event) {
+    awebp->show();
 }
