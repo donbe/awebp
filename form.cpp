@@ -79,7 +79,7 @@ void Form::onClicked() {
     for (QString filename : fileNames) {
         pic.use_argb = 1;
 
-        ok = ReadImage(filename.toLatin1(), &pic);
+        ok = ReadImage(filename.toLocal8Bit().data(), &pic);
         if (!ok) {
             qCritical("ReadImage fail.\n");
             goto End;
@@ -144,7 +144,7 @@ void Form::onClicked() {
                                                         QDir::homePath() + "/Downloads/untitled.webp",
                                                         "Images (*.webp)");
         if (fileName.length()) {
-            ok = ImgIoUtilWriteFile(fileName.toLatin1(), webp_data.bytes, webp_data.size);
+            ok = ImgIoUtilWriteFile(fileName.toLocal8Bit().data(), webp_data.bytes, webp_data.size);
             if (!ok) {
                 qCritical("Error while write file\n");
             }

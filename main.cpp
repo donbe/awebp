@@ -19,7 +19,7 @@ static void SYSLOG(const char *format, ...) {
 
 // 输出stderr到日志文件
 void myMessageHandler(QtMsgType type, const QMessageLogContext &, const QString & str) {
-    const char *msg = str.toLatin1();
+    const char *msg = str.toLocal8Bit().data();
     switch (type) {
         case QtDebugMsg:
             SYSLOG("Debug: %s\n", msg);
