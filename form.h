@@ -2,6 +2,10 @@
 #define FORM_H
 
 #include <QWidget>
+#include <webp/types.h>
+#include <webp/decode.h>
+#include <webp/encode.h>
+#include <webp/mux.h>
 
 namespace Ui {
 class Form;
@@ -23,6 +27,11 @@ public slots:
 
 private:
     Ui::Form *ui;
+
+    int ReadImage(const char filename[], WebPPicture* const pic);
+    int SetLoopCount(int loop_count, WebPData* const webp_data);
+
+
 };
 
 #endif // FORM_H
