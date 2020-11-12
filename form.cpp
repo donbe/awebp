@@ -10,6 +10,8 @@
 #include <QMessageBox>
 
 
+
+
 Form::Form(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Form) {
@@ -78,7 +80,10 @@ void Form::onClicked() {
         pic.use_argb = 1;
 
         ok = ReadImage(filename.toLatin1(), &pic);
-        if (!ok) goto End;
+        if (!ok) {
+            qCritical("ReadImage fail.\n");
+            goto End;
+        }
 
         if (enc == NULL) {
             width = pic.width;
@@ -107,7 +112,10 @@ void Form::onClicked() {
         }
 
         WebPPictureFree(&pic);
-        if (!ok) goto End;
+        if (!ok) {
+            qCritical("Error while free frame #%d\n", pic_num);
+            goto End;
+        }
 
         timestamp_ms += duration;
         ++pic_num;
@@ -126,6 +134,9 @@ void Form::onClicked() {
 
     if (ok && loop_count > 0) {  // Re-mux to add loop count.
         ok = SetLoopCount(loop_count, &webp_data);
+        if (!ok) {
+            qCritical("Error while set loop count\n");
+        }
     }
 
     if (ok) {
@@ -134,6 +145,9 @@ void Form::onClicked() {
                                                         "Images (*.webp)");
         if (fileName.length()) {
             ok = ImgIoUtilWriteFile(fileName.toLatin1(), webp_data.bytes, webp_data.size);
+            if (!ok) {
+                qCritical("Error while write file\n");
+            }
         }
     }
 
