@@ -73,3 +73,5 @@ macx: PRE_TARGETDEPS += /usr/local/lib/libjpeg.a
 
 # 指定版本后，是不是低版本就用不了了
 QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.15
+
+ICON = awebp.icns
