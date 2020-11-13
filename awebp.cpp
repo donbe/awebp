@@ -44,7 +44,7 @@ Awebp::~Awebp() {
 void Awebp::onClicked() {
     QFileDialog dialog(this);
 
-    dialog.setNameFilter("Images (*.png)"); // 设置后缀
+    dialog.setNameFilter("Images (*.png *.jpg *.jpeg)"); // 设置后缀
     dialog.setFileMode(QFileDialog::ExistingFiles); // 设置可多选
     dialog.setDirectory(QDir::homePath()); // 设置打开默认目录
 
